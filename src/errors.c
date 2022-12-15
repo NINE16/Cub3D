@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/14 15:13:34 by nnemeth          ###   ########.fr       */
+/*   Updated: 2022/12/15 14:21:57 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ void	ft_error(t_recup *recup, char *str)
 	if (recup->erreur == 1)
 		exit(1);
 /////////////////free textures
-	// if (recup->no)
-	// 	free(recup->no);
-	// if (recup->so)
-	// 	free(recup->so);
-	// if (recup->we)
-	// 	free(recup->we);
-	// if (recup->ea)
-	// 	free(recup->ea);
-	// if (recup->sp)
-	// 	free(recup->sp);
+	 if (recup->no)
+	 	free(recup->no);
+	 if (recup->so)
+	 	free(recup->so);
+	 if (recup->we)
+	 	free(recup->we);
+	 if (recup->ea)
+	 	free(recup->ea);
+	 if (recup->sp)
+	 	free(recup->sp);
 
 /////////////////free la map
 	if (recup->minimap)
@@ -75,16 +75,16 @@ void	ft_error(t_recup *recup, char *str)
 		free(recup->minimap);
 
 /////////////////free sorder, sdist, sxy
-	// if (recup->s.order)
-	// 	free(recup->s.order);
-	// if (recup->s.dist)
-	// 	free(recup->s.dist);
-	// if (recup->sxy)//etait en comm je sais pas pourquoi
-	// 	free(recup->sxy);//etait en comm je sais pas pourquoi
+	 if (recup->s.order)
+	 	free(recup->s.order);
+	 if (recup->s.dist)
+	 	free(recup->s.dist);
+	 if (recup->sxy)//etait en comm je sais pas pourquoi
+	 	free(recup->sxy);//etait en comm je sais pas pourquoi
 
 //////////////////free zbuffer
-	// if (recup->s.zbuffer)//etait en comm je sais pas pourquoi
-	// 	free(recup->s.zbuffer);//etait en comm je sais pas pourquoi
+	 if (recup->s.zbuffer)//etait en comm je sais pas pourquoi
+	 	free(recup->s.zbuffer);//etait en comm je sais pas pourquoi
 
 
 /*	while (i != 0)

@@ -26,7 +26,7 @@ CC = gcc
 # .a = lib static, les fonctions utilisees sont directement ecrite dans le binaire
 # .dylib = lib dynamique, les fonctions doivent etre chargees au momnent ou on lance le binaire
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 OBJ_DIR = obj
 SRC_DIR = src
@@ -48,7 +48,6 @@ all:
 # -L donner le nom du dossier / -l donner le nom le la lib
 # loader path = ecrit le chemin de la mlx dans le binaire pour pouvoir la retrouver au moment ou on lance le binaire
 $(NAME): $(OBJ)
-		$(MAKE) -C ./Libft/libft
 		${CC} $(LIB) $(CFLAGS) -o $(NAME) $(OBJ) -L $(MLX_DIR) -Lmlx -lmlx -lz -framework OpenGL -framework AppKit
 		@echo $(NAME) : Created !
 

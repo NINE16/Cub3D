@@ -1,11 +1,12 @@
 #include "../inc/cub3d.h"
 
-int	ft_path_texture(char *str, char **texture, t_recup*recup, int j)
+int	ft_path_texture(char *str, char **texture, t_recup *recup, int j)
 {
 	int	i;
 
 	i = 0;
-	*texture = (char *)malloc(sizeof(char) *  ft_strlen(str) + 1);
+	if(!(*texture = (char *)malloc(sizeof(char) *  ft_strlen(str) + 1)))
+		ft_error(recup, "Malloc texture parsing impossible\n");
 	// *texture[i] = str[j];
 	(void)recup;
 	j += 1;

@@ -28,7 +28,8 @@ t_recup	*ft_init_struct(void)
 {
 	t_recup	*recup;
 
-	recup = malloc (sizeof(t_recup) + 1);
+	if(!(recup = malloc (sizeof(t_recup) + 1)))
+		return(0);
 	recup->rx = 1000;
 	recup->ry = 1000;
 	recup->i = 0;

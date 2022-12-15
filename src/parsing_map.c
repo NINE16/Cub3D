@@ -47,10 +47,12 @@ int	ft_copy_map(char **map, t_recup *recup)
 
 	i = 0;
 	j = 0;
-	recup->minimap = malloc(sizeof(char *) * recup->sizeline + 1);
+	if (!(recup->minimap = malloc(sizeof(char *) * recup->sizeline + 1)))
+		return(0);
 	while (map[i])
 	{
-		recup->minimap[j] = malloc(sizeof(char) * recup->sizeline + 1);
+		if (!(recup->minimap[j] = malloc(sizeof(char) * recup->sizeline + 1)))
+			return(0);
 		recup->minimap[j] = map[i];
 		j++;
 		i++;
