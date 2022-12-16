@@ -28,10 +28,8 @@ int	ft_is_map(char *str)
 		while (str[i] != '\0')
 		{
 			if (str[i] != ' ' && str[i] != '0' && str[i] != '1' \
-				&& str[i] != 'N' && str[i] != 'S' \
-				&& str[i] != 'E' && str[i] != 'W' && str[i] != '\n'
-				&& str[i] != '\t')
-				// printf("%s\n", "Map missing elements");
+				&& str[i] != 'N' && str[i] != 'E' \
+				&& str[i] != 'W' && str[i] != '\n' && str[i] != '\t')
 				return (0);
 			i++;
 		}
@@ -48,11 +46,11 @@ int	ft_copy_map(char **map, t_recup *recup)
 	i = 0;
 	j = 0;
 	if (!(recup->minimap = malloc(sizeof(char *) * recup->sizeline + 1)))
-		return(0);
+		return (0);
 	while (map[i])
 	{
 		if (!(recup->minimap[j] = malloc(sizeof(char) * recup->sizeline + 1)))
-			return(0);
+			return (0);
 		recup->minimap[j] = map[i];
 		j++;
 		i++;

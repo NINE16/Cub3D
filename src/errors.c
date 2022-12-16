@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/15 14:21:57 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/15 16:59:35 by nnemeth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,24 @@ void	ft_verify_errors(t_recup *recup)
 
 	if (recup->depart == 'x')
 		ft_error(recup, "Pas de joueur\n");
-	// if (recup->indicateur2 != 6)
-	// 	ft_error(recup, "Mauvaises donnees F ou C\n");
-
 	i = -1;
 	len = 0;
 	while (++i < (recup->nblines))
 	{
 		if (recup->minimap[i][0] != '1')
-			ft_error(recup, "No walls");
+			ft_error(recup, "No walls\n");
 	}
 	i = -1;
 	while (++i < (recup->nblines))
 	{
 		len = ft_strlen(recup->minimap[i]);
 		if (recup->minimap[i][len - 1] != '1')
-			ft_error(recup, "No walls");
-		// replace_empty(recup, len, recup->minimap[i]);
+			ft_error(recup, "No walls\n");
 	}
 	if (check_wall(recup->minimap[0]) == 1)
-		ft_error(recup, "No walls");
+		ft_error(recup, "No walls\n");
 	if (check_wall(recup->minimap[recup->nblines - 1]) == 1)
-		ft_error(recup, "No walls");
+		ft_error(recup, "No walls\n");
 }
 
 void	ft_error(t_recup *recup, char *str)
@@ -75,16 +71,16 @@ void	ft_error(t_recup *recup, char *str)
 		free(recup->minimap);
 
 /////////////////free sorder, sdist, sxy
-	 if (recup->s.order)
-	 	free(recup->s.order);
-	 if (recup->s.dist)
-	 	free(recup->s.dist);
-	 if (recup->sxy)//etait en comm je sais pas pourquoi
-	 	free(recup->sxy);//etait en comm je sais pas pourquoi
+	//  if (recup->s.order)
+	//  	free(recup->s.order);
+	//  if (recup->s.dist)
+	//  	free(recup->s.dist);
+	//  if (recup->sxy)//etait en comm je sais pas pourquoi
+	//  	free(recup->sxy);//etait en comm je sais pas pourquoi
 
 //////////////////free zbuffer
-	 if (recup->s.zbuffer)//etait en comm je sais pas pourquoi
-	 	free(recup->s.zbuffer);//etait en comm je sais pas pourquoi
+	//  if (recup->s.zbuffer)//etait en comm je sais pas pourquoi
+	//  	free(recup->s.zbuffer);//etait en comm je sais pas pourquoi
 
 
 /*	while (i != 0)
@@ -106,8 +102,6 @@ int		ft_exit(t_recup *recup)
 		mlx_destroy_image(recup->data.mlx_ptr, recup->texture[2].img);
 	if (recup->texture[3].img)
 		mlx_destroy_image(recup->data.mlx_ptr, recup->texture[3].img);
-	if (recup->texture[4].img)
-		mlx_destroy_image(recup->data.mlx_ptr, recup->texture[4].img);
 	if (recup->data.mlx_win)
 		mlx_destroy_window(recup->data.mlx_ptr, recup->data.mlx_win);
 	exit(0);

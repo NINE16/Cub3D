@@ -9,7 +9,7 @@ void	check_map(t_recup *recup, char *ficher)
 	map = 0;
 	fd = open(ficher, O_RDONLY);
 	if (fd == -1)
-		ft_error(recup, "Cannot read file");
+		ft_error(recup, "Cannot read file\n");
 	chars = ft_strdup("");
 	while (1)
 	{
@@ -29,8 +29,7 @@ t_recup	*ft_init_struct(void)
 	t_recup	*recup;
 
 	if(!(recup = malloc (sizeof(t_recup) + 1)))
-		return(0);
-	recup->rx = 1000;
+		return(0);	recup->rx = 1000;
 	recup->ry = 1000;
 	recup->i = 0;
 	recup->f = 0;
@@ -51,7 +50,6 @@ t_recup	*ft_init_struct(void)
 	recup->texture[1].img = NULL;
 	recup->texture[2].img = NULL;
 	recup->texture[3].img = NULL;
-	recup->texture[4].img = NULL;
 	recup->elements = 0;
 	recup->indicateur = 0;
 	recup->indicateur2 = 0;
@@ -65,13 +63,11 @@ int	check_args(char *file)
 	if (ft_strchr(file, '.') == 0)
 	{
 		printf("%s\n", "Invalid file");
-		free(file);
 		exit(0);
 	}
 	else if (ft_strncmp(ft_strrchr(file, '.'), ".cub", 5))
 	{
 		printf("%s\n", "Invalid extension");
-		free(file);
 		exit(0);
 	}
 	return (0);
@@ -89,9 +85,7 @@ int	main(int argc, char **argv)
 		check_map(recup, argv[1]);
 		mapcheck(recup);
 		find_player(recup);
-		// put_area(recup);
 		ft_mlx(recup);
-		// mlx_key_hook(recup->data.mlx_win, ft_key_press, recup);
 		mlx_loop(recup->data.mlx_ptr);
 	}
 	else

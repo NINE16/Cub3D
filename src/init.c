@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:07:18 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/12 17:41:49 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/15 17:00:35 by nnemeth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	ft_init_2(t_recup *recup)
 	recup->texture[4].img = NULL;
 	recup->data.mlx_win = NULL;
 	recup->map = NULL;
-	recup->s.order = NULL;
-	recup->s.dist = NULL;
 }
 
 void	ft_init_dir(t_recup *recup)

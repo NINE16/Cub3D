@@ -29,21 +29,20 @@ void	find_player(t_recup *recup)
 		ft_error(recup, "You must have at least 1 player");
 }
 
-void	init_minimap(t_recup *recup)
-{
-	recup->data.mlx_ptr = mlx_init();
-	// ft_get_texture_1(recup);
-	recup->data.mlx_win = mlx_new_window(recup->data.mlx_ptr,
-			1920, 1080, "Cub3D");
-	recup->data.img = mlx_new_image(recup->data.mlx_ptr,
-			(recup->data.width * 4), (recup->data.height * 4));
-	recup->data.addr = (int *)mlx_get_data_addr(recup->data.img,
-			&recup->data.bits_per_pixel, &recup->data.line_length,
-			&recup->data.endian);
-	// mlx_put_image_to_window(recup->data.mlx_ptr, recup->data.mlx_win, recup->data.north, 64, 64);
-	recup->data.miniheight = 15 * 7;
-	recup->data.miniwidth = 30 * 7;
-}
+// void	init_minimap(t_recup *recup)
+// {
+// 	// recup->data.mlx_ptr = mlx_init();
+// 	// ft_get_texture_1(recup);
+// 	// recup->data.mlx_win = mlx_new_window(recup->data.mlx_ptr,
+// 			// 1920, 1080, "Cub3D");
+// 	recup->data.img2 = mlx_new_image(recup->data.mlx_ptr,
+// 			(recup->data.width * 4), (recup->data.height * 4));
+// 	recup->data.addr2 = (int *)mlx_get_data_addr(recup->data.img2,
+// 			&recup->data.bits_per_pixel2, &recup->data.line_length2,
+// 			&recup->data.endian2);
+// 	recup->data.miniheight = 15 * 7;
+// 	recup->data.miniwidth = 30 * 7;
+// }
 
 void	put_area(t_recup *recup)
 {
@@ -53,7 +52,7 @@ void	put_area(t_recup *recup)
 
 	i = 0;
 	color = 0;
-	init_minimap(recup);
+	// init_minimap(recup);
 	while (i < recup->nblines)
 	{
 		j = 0;
@@ -64,8 +63,8 @@ void	put_area(t_recup *recup)
 		}
 		i++;
 	}
-	mlx_put_image_to_window(recup->data.mlx_ptr,
-		recup->data.mlx_win, recup->data.img, 50, 50);
+	// mlx_put_image_to_window(recup->data.mlx_ptr,
+	// 	recup->data.mlx_win, recup->data.img, 50, 50);
 }
 
 int	ft_mini_print(t_recup *recup, int i, int j, int nb)

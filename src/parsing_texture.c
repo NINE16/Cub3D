@@ -1,14 +1,16 @@
 #include "../inc/cub3d.h"
 
-int	ft_path_texture(char *str, char **texture, t_recup *recup, int j)
+int	ft_path_texture(char *str, char **texture, t_recup*recup, int j)
 {
 	int	i;
 
 	i = 0;
 	if(!(*texture = (char *)malloc(sizeof(char) *  ft_strlen(str) + 1)))
 		ft_error(recup, "Malloc texture parsing impossible\n");
-	// *texture[i] = str[j];
 	(void)recup;
+	j = (find_beg(str, j) - 1);
+	if (j == 0)
+		ft_error(recup,"Error in texture");
 	j += 1;
 	while (str[j] != '\0')
 	{
@@ -17,6 +19,17 @@ int	ft_path_texture(char *str, char **texture, t_recup *recup, int j)
 		j++;
 	}
 	(*texture)[i] = '\0';
+	return (0);
+}
+
+int	find_beg(char *str, int j)
+{
+	while (str[j])
+	{	
+		if (str[j] == '.')
+			return (j);
+		j++;
+	}
 	return (0);
 }
 
@@ -34,10 +47,8 @@ void	ft_texture(char *str, t_recup *recup)
 		ft_path_texture(str, &recup->we, recup, 2);
 	else if (ft_strncmp(str, "EA", 3) == 0)
 		ft_path_texture(str, &recup->ea, recup, 2);
-	else if (str[i] == 'S' && str[i + 1] != 'O')
-		ft_path_texture(str, &recup->sp, recup, 1);
 	else if (str[0] != 'N' && str[0] != 'S' && str[0] != 'W' && str[0] != 'E'
-		&& str[0] != 'R' && str[0] != 'F' && str[0] != 'C'
+		&& str[0] != 'F' && str[0] != 'C'
 		&& str[0] > 65 && str[0] < 122)
 		printf("Premier caractere d'un element n'est pas un identifiant\n");
 	j++;

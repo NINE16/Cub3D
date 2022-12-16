@@ -6,7 +6,7 @@
 /*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/14 15:14:21 by nnemeth          ###   ########.fr       */
+/*   Updated: 2022/12/15 15:11:39 by nnemeth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ void	ft_get_texture_adress(t_recup *recup)
 	recup->texture[3].addr = (int *)mlx_get_data_addr(recup->texture[3].img,
 			&recup->texture[3].bits_per_pixel,
 			&recup->texture[3].line_length, &recup->texture[3].endian);
-	recup->texture[4].addr = (int *)mlx_get_data_addr(recup->texture[4].img,
-			&recup->texture[4].bits_per_pixel,
-			&recup->texture[4].line_length, &recup->texture[4].endian);
 }
 
 void	ft_get_texture(t_recup *recup)
@@ -41,8 +38,6 @@ void	ft_get_texture(t_recup *recup)
 		ft_error(recup, "Texture WE\n");
 	if (!(recup->texture[3].img))
 		ft_error(recup, "Texture EA\n");
-	if (!(recup->texture[4].img))
-		ft_error(recup, "Texture S\n");
 	ft_get_texture_adress(recup);
 }
 
@@ -56,8 +51,6 @@ void ft_get_texture_1(t_recup *recup)
 					&(recup->texture[2].height));
 	recup->texture[3].img = mlx_xpm_file_to_image(recup->data.mlx_ptr, recup->ea, &(recup->texture[3].width),
 					&(recup->texture[3].height));
-	recup->texture[4].img = mlx_xpm_file_to_image(recup->data.mlx_ptr, recup->sp, &(recup->texture[4].width),
-					&(recup->texture[4].height));
 	ft_get_texture(recup);
 }
 
@@ -78,6 +71,7 @@ int		ft_raycasting(t_recup *recup)
 	ft_left_right(recup);
 	ft_rotate_right_left(recup);
 	ft_swap(recup);
+	put_area(recup);
 	return (0);
 }
 

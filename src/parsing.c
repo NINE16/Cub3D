@@ -52,7 +52,9 @@ void	ft_create_minimap(t_recup *recup)
 		if (ft_is_map(recup->map[i]) == 1)
 		{
 			if (ft_copy_map(&recup->map[i], recup) == 0)
+			{
 				break ;
+			}
 			else
 				ft_error(recup, "Missing elements");
 		}

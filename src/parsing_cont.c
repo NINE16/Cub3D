@@ -13,7 +13,7 @@ void	check_elements(t_recup *recup)
 			break ;
 		i++;
 	}
-	if (recup->elements != 7)
+	if (recup->elements != 6)
 		ft_error(recup, "Your map is not the last element");
 }
 
