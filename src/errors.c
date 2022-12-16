@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/16 16:55:28 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/16 17:31:53 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ void	ft_error(t_recup *recup, char *str)
 		}
 	}
 	if (recup->map)
-		free(recup->map);
-	recup->map = NULL;
+	free(recup->map);
 /////////////////free sorder, sdist, sxy
 	//  if (recup->s.order)
 	//  	free(recup->s.order);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:30 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/15 12:22:57 by nnemeth          ###   ########.fr       */
+/*   Updated: 2022/12/16 17:15:28 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,7 @@ void		ft_initialisation(t_recup *recup);
 int			ft_murs(t_recup *recup);
 int			ft_is_map(char *str);
 void		ft_map(char *str, t_recup *recup);
+void	free_value(t_recup *recup);
 
 
 //--------------RAYCASTING----------------//

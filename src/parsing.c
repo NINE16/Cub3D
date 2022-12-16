@@ -60,11 +60,15 @@ void	ft_create_minimap(t_recup *recup)
 		}
 		i++;
 	}
+	// if (recup->map)
+	// {
+	// 	free(recup->map);
+	// }
+	// i = 0;
+	// while(recup->map[i])
+	// {
+	// 	printf("after:%s\n", recup->map[i]);
+	// 	i++;
+	// }
 	ft_verify_errors(recup);
-	i = 0;
-	while(recup->map[i])
-	{
-		printf("after:%s\n", recup->map[i]);
-		i++;
-	}
 }

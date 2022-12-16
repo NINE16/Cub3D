@@ -84,6 +84,7 @@ int	main(int argc, char **argv)
 		check_args(argv[1]);
 		check_map(recup, argv[1]);
 		mapcheck(recup);
+		//free(recup->map);
 		find_player(recup);
 		ft_mlx(recup);
 		mlx_loop(recup->data.mlx_ptr);
