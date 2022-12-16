@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:30 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/14 16:30:05 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/15 12:22:57 by nnemeth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ typedef struct		s_data
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
+	int			bits_per_pixel2;
+	int			line_length2;
+	int			endian2;
 	int			miniheight;
 	int			miniwidth;
 	int			forward;
@@ -256,5 +259,6 @@ void		ft_get_texture(t_recup *recup);
 void		free_map(t_recup *recup);
 void		free_minimap(t_recup *recup);
 void		replace_empty(t_recup *recup, int len, char *curr_line);
+int			find_beg(char *str, int j);
 
 #endif
