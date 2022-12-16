@@ -3,7 +3,6 @@ SO ./textures/bluestone.xpm
 EA ./textures/greystone.xpm
 WE ./textures/red.xpm
 
-S ./textures/tonneau.xpm
 F 200,             255,255
 C 238  ,175,97
 

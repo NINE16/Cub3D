@@ -6,7 +6,7 @@
 /*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/15 16:59:35 by nnemeth          ###   ########.fr       */
+/*   Updated: 2022/12/16 14:57:02 by nnemeth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_verify_errors(t_recup *recup)
 {
 	int	i;
 	int	len;
-
+	
 	if (recup->depart == 'x')
 		ft_error(recup, "Pas de joueur\n");
 	i = -1;
@@ -41,35 +41,46 @@ void	ft_verify_errors(t_recup *recup)
 
 void	ft_error(t_recup *recup, char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	
 	write(1, "Error\n", 6);
 	write(1, str, ft_strlen(str));
 	if (recup->erreur == 1)
 		exit(1);
-/////////////////free textures
-	 if (recup->no)
-	 	free(recup->no);
-	 if (recup->so)
-	 	free(recup->so);
-	 if (recup->we)
-	 	free(recup->we);
-	 if (recup->ea)
-	 	free(recup->ea);
-	 if (recup->sp)
-	 	free(recup->sp);
-
-/////////////////free la map
+	if (recup->no)
+		free(recup->no);
+	if (recup->so)
+		free(recup->so);
+	if (recup->we)
+		free(recup->we);
+	if (recup->ea)
+		free(recup->ea);
+	if (recup->sp)
+		free(recup->sp);
 	if (recup->minimap)
 	{
 		while (++i < recup->nblines)
+		{
 			free(recup->minimap[i]);
+			recup->minimap[i] = NULL;
+		}
 	}
 	if (recup->minimap)
 		free(recup->minimap);
-
+	recup->minimap = NULL;
+	i = -1;
+	if (recup->map)
+	{
+		while (recup->map[++i])
+		{
+			free(recup->map[i]);
+			recup->map[i] = NULL;
+		}
+	}
+	if (recup->map)
+		free(recup->map);
+	recup->map = NULL;
 /////////////////free sorder, sdist, sxy
 	//  if (recup->s.order)
 	//  	free(recup->s.order);
@@ -89,6 +100,7 @@ void	ft_error(t_recup *recup, char *str)
 	}*/
 	ft_exit(recup);
 }
+
 
 int		ft_exit(t_recup *recup)
 {
