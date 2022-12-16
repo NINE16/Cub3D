@@ -51,10 +51,17 @@ int	ft_copy_map(char **map, t_recup *recup)
 	{
 		if (!(recup->minimap[j] = malloc(sizeof(char) * recup->sizeline + 1)))
 			return (0);
-		recup->minimap[j] = map[i];
+		recup->minimap[j] = ft_strdup(map[i]);
+		//printf("map: %s\n",recup->map[i]);
+		free(recup->map[i]);
 		j++;
 		i++;
 	}
+	// while(map[i])//la map ici est bien free on print rien
+	// {
+	// 	printf("map2: %s\n",map[i]);
+	// 	i++;
+	// }
 	check_minimap(recup);
 	return (0);
 }

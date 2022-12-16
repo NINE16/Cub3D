@@ -58,8 +58,13 @@ void	ft_create_minimap(t_recup *recup)
 			else
 				ft_error(recup, "Missing elements");
 		}
-		free(recup->map[i]);
 		i++;
 	}
 	ft_verify_errors(recup);
+	i = 0;
+	while(recup->map[i])
+	{
+		printf("after:%s\n", recup->map[i]);
+		i++;
+	}
 }
