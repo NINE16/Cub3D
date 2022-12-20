@@ -144,6 +144,7 @@ typedef struct		s_recup
 	char		*we;
 	char		*ea;
 	char		*sp;
+	char 		**textures;
 	int			nblines;//nb line dans toutes la map
 	int			sizeline;
 	char		**map;//prend map a deux dimensions met dans char ** , allouer dans ft_parsing_map
@@ -153,6 +154,7 @@ typedef struct		s_recup
 	int			dx; //x de position depart
 	int			dy; //y position depart
 	int			indicateur;
+	int			indicateur3;
 	int			indicateur2;
 	int			erreur;
 	t_data		texture[5];

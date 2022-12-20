@@ -44,6 +44,7 @@ void	ft_error(t_recup *recup, char *str)
 	int	i;
 
 	i = -1;
+	recup->indicateur3 = 1;
 	write(1, "Error\n", 6);
 	write(1, str, ft_strlen(str));
 	if (recup->erreur == 1)
@@ -82,16 +83,16 @@ void	ft_error(t_recup *recup, char *str)
 		free(recup->map);
 	recup->map = NULL;
 /////////////////free sorder, sdist, sxy
-	//  if (recup->s.order)
-	//  	free(recup->s.order);
-	//  if (recup->s.dist)
-	//  	free(recup->s.dist);
-	//  if (recup->sxy)//etait en comm je sais pas pourquoi
-	//  	free(recup->sxy);//etait en comm je sais pas pourquoi
+	  if (recup->s.order)
+	  	free(recup->s.order);
+	  if (recup->s.dist)
+	  	free(recup->s.dist);
+	 if (recup->sxy)//etait en comm je sais pas pourquoi
+	  	free(recup->sxy);//etait en comm je sais pas pourquoi
 
 //////////////////free zbuffer
-	//  if (recup->s.zbuffer)//etait en comm je sais pas pourquoi
-	//  	free(recup->s.zbuffer);//etait en comm je sais pas pourquoi
+	  if (recup->s.zbuffer)//etait en comm je sais pas pourquoi
+	  	free(recup->s.zbuffer);//etait en comm je sais pas pourquoi
 
 
 	// while (i != 0)
@@ -104,6 +105,8 @@ void	ft_error(t_recup *recup, char *str)
 
 int		ft_exit(t_recup *recup)
 {
+	if (recup->indicateur3 == 0)
+		ft_error(recup, "Error escape free\n");
 	if (recup->data.img)
 		mlx_destroy_image(recup->data.mlx_ptr, recup->data.img);
 	if (recup->texture[0].img)

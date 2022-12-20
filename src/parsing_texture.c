@@ -7,7 +7,7 @@ int	ft_path_texture(char *str, char **texture, t_recup*recup, int j)
 	i = 0;
 	if(!(*texture = (char *)malloc(sizeof(char) *  ft_strlen(str) + 1)))
 		ft_error(recup, "Malloc texture parsing impossible\n");
-	(void)recup;
+	//(void)recup;
 	j = (find_beg(str, j) - 1);
 	if (j == 0)
 		ft_error(recup,"Error in texture");
@@ -35,10 +35,8 @@ int	find_beg(char *str, int j)
 
 void	ft_texture(char *str, t_recup *recup)
 {
-	int			i;
 	static int	j = 0;
 
-	i = 0;
 	if (ft_strncmp(str, "NO", 2) == 0)
 		ft_path_texture(str, &recup->no, recup, 2);
 	else if (ft_strncmp(str, "SO", 3) == 0)
