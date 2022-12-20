@@ -71,17 +71,17 @@ void	ft_error(t_recup *recup, char *str)
 		free(recup->minimap);
 	recup->minimap = NULL;
 	i = -1;
-	// if (recup->map)
-	// {
-		while (++i < recup->nblines)
-		{
-			free(recup->map[i]);
-			recup->map[i] = NULL;
-		}
-	// }
+	//  if (recup->map)
+	//  {
+	// 	while (++i < recup->nblines)
+	// 	{
+	// 		free(recup->map[i]);
+	// 		recup->map[i] = NULL;
+	// 	}
+	//  }
 	if (recup->map)
 		free(recup->map);
-	recup->map = NULL;
+	// recup->map = NULL;
 /////////////////free sorder, sdist, sxy
 	  if (recup->s.order)
 	  	free(recup->s.order);
@@ -106,7 +106,7 @@ void	ft_error(t_recup *recup, char *str)
 int		ft_exit(t_recup *recup)
 {
 	if (recup->indicateur3 == 0)
-		ft_error(recup, "Error escape free\n");
+		ft_error(recup, "Escaped\n");
 	if (recup->data.img)
 		mlx_destroy_image(recup->data.mlx_ptr, recup->data.img);
 	if (recup->texture[0].img)
@@ -120,7 +120,6 @@ int		ft_exit(t_recup *recup)
 	if (recup->data.mlx_win)
 		mlx_destroy_window(recup->data.mlx_ptr, recup->data.mlx_win);
 	free(recup);
-	recup = NULL;
 	exit(0);
 }
 
