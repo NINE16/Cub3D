@@ -15,12 +15,19 @@ void	check_map(t_recup *recup, char *ficher)
 	{
 		map = get_next_line(fd);
 		if (map == NULL)
+		{
+			free(map);
 			break ;
+		}
 		chars = ft_strjoin(chars, map);
+		free(map);
+		map = NULL;
 	}
 	recup->map = ft_split(chars, '\n');
 	free(chars);
+	chars = NULL;
 	free(map);
+	map = NULL;
 	close (fd);
 }
 
@@ -29,7 +36,8 @@ t_recup	*ft_init_struct(void)
 	t_recup	*recup;
 
 	if(!(recup = malloc (sizeof(t_recup) + 1)))
-		return(0);	recup->rx = 1000;
+		return(0);	
+	recup->rx = 1000;
 	recup->ry = 1000;
 	recup->i = 0;
 	recup->f = 0;
@@ -84,7 +92,6 @@ int	main(int argc, char **argv)
 		check_args(argv[1]);
 		check_map(recup, argv[1]);
 		mapcheck(recup);
-		//free(recup->map);
 		find_player(recup);
 		ft_mlx(recup);
 		mlx_loop(recup->data.mlx_ptr);

@@ -42,24 +42,27 @@ int	ft_copy_map(char **map, t_recup *recup)
 {
 	int	i;
 	int	j;
+	// char **tmp;
 
 	i = 0;
 	j = 0;
-	if (!(recup->minimap = malloc(sizeof(char *) * recup->sizeline + 1)))
-		return (0);
+	// if (!(recup->minimap = malloc(sizeof(char *) * recup->sizeline + 1)))
+	// 	return (0);
+	if (j == 0)
+		recup->minimap = malloc(((recup->nblines)) * sizeof(char *));
 	while (map[i])
 	{
-		if (!(recup->minimap[j] = malloc(sizeof(char) * recup->sizeline + 1)))
+		if (!(recup->minimap[j] = malloc(sizeof(char) * (recup->sizeline))))
 			return (0);
 		recup->minimap[j] = ft_strdup(map[i]);
-		//printf("map: %s\n",recup->map[i]);
-		free(recup->map[i]);
+		free(map[i]);
 		j++;
 		i++;
 	}
+	i = 0;
 	// while(map[i])//la map ici est bien free on print rien
 	// {
-	// 	printf("map2: %s\n",map[i]);
+	// 	printf("map2: %p\n",map[i]);
 	// 	i++;
 	// }
 	check_minimap(recup);

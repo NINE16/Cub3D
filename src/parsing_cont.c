@@ -72,7 +72,9 @@ void	check_minimap(t_recup *recup)
 		{
 			if (ft_isspace(recup->minimap[i][j]) == 1)
 			{
+				printf("%s\n", recup->minimap[i]);
 				recup->minimap[i][j] = '1';
+				printf("%s\n", recup->minimap[i]);
 			}
 			j++;
 		}

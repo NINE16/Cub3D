@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nemethnikol <nemethnikol@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/16 17:31:53 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/19 16:55:45 by nemethnikol      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_error(t_recup *recup, char *str)
 		free(recup->sp);
 	if (recup->minimap)
 	{
-		while (++i < recup->nblines)
+		while (++i < recup->sizeline)
 		{
 			free(recup->minimap[i]);
 			recup->minimap[i] = NULL;
@@ -69,17 +69,18 @@ void	ft_error(t_recup *recup, char *str)
 	if (recup->minimap)
 		free(recup->minimap);
 	recup->minimap = NULL;
-	i = -1;
+	// i = -1;
+	// if (recup->map)
+	// {
+	// 	while (recup->map[++i])
+	// 	{
+	// 		free(recup->map[i]);
+	// 		recup->map[i] = NULL;
+	// 	}
+	// }
 	if (recup->map)
-	{
-		while (recup->map[++i])
-		{
-			free(recup->map[i]);
-			recup->map[i] = NULL;
-		}
-	}
-	if (recup->map)
-	free(recup->map);
+		free(recup->map);
+	recup->map = NULL;
 /////////////////free sorder, sdist, sxy
 	//  if (recup->s.order)
 	//  	free(recup->s.order);
@@ -93,10 +94,10 @@ void	ft_error(t_recup *recup, char *str)
 	//  	free(recup->s.zbuffer);//etait en comm je sais pas pourquoi
 
 
-/*	while (i != 0)
-	{
-		system("leaks Cub3D");
-	}*/
+	// while (i != 0)
+	// {
+	// 	system("leaks Cub3D");
+	// }
 	ft_exit(recup);
 }
 
@@ -115,6 +116,8 @@ int		ft_exit(t_recup *recup)
 		mlx_destroy_image(recup->data.mlx_ptr, recup->texture[3].img);
 	if (recup->data.mlx_win)
 		mlx_destroy_window(recup->data.mlx_ptr, recup->data.mlx_win);
+	free(recup);
+	recup = NULL;
 	exit(0);
 }
 

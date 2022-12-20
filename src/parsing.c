@@ -51,23 +51,27 @@ void	ft_create_minimap(t_recup *recup)
 	{
 		if (ft_is_map(recup->map[i]) == 1)
 		{
-			if (ft_copy_map(&recup->map[i], recup) == 0)
-			{
-				break ;
-			}
-			else
-				ft_error(recup, "Missing elements");
+			ft_copy_map(&recup->map[i], recup);
+			// {
+			break ;
+			// }
+			// else
+			// 	ft_error(recup, "Missing elements");
 		}
+		// else
+		free(recup->map[i]);
 		i++;
 	}
+	// i = 0;
 	// if (recup->map)
 	// {
-	// 	free(recup->map);
+	// 	free(recup->map[i]);
+	// 	recup->map[i] = NULL;
 	// }
 	// i = 0;
 	// while(recup->map[i])
 	// {
-	// 	printf("after:%s\n", recup->map[i]);
+	// 	printf("after:%p\n", recup->map[i]);
 	// 	i++;
 	// }
 	ft_verify_errors(recup);
