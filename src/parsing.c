@@ -71,7 +71,9 @@ void	ft_create_minimap(t_recup *recup)
 	// i = 0;
 	// while(recup->map[i])
 	// {
-	// 	printf("after:%p\n", recup->map[i]);
+	// 	printf("after:%s\n", recup->map[i]);
+	// 	if (recup->map)
+	// 		free(recup->map[i]);
 	// 	i++;
 	// }
 	ft_verify_errors(recup);

@@ -60,11 +60,9 @@ void	check_minimap(t_recup *recup)
 {
 	int	i;
 	int	j;
-	int	diff;
 
 	i = 0;
 	j = 0;
-	diff = 0;
 	while (i < recup->nblines)
 	{
 		j = 0;
@@ -72,9 +70,9 @@ void	check_minimap(t_recup *recup)
 		{
 			if (ft_isspace(recup->minimap[i][j]) == 1)
 			{
-				printf("%s\n", recup->minimap[i]);
+				// printf("%s\n", recup->minimap[i]);
 				recup->minimap[i][j] = '1';
-				printf("%s\n", recup->minimap[i]);
+				// printf("%s\n", recup->minimap[i]);
 			}
 			j++;
 		}

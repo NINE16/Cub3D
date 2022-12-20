@@ -6,7 +6,7 @@
 /*   By: nemethnikol <nemethnikol@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/19 16:55:45 by nemethnikol      ###   ########.fr       */
+/*   Updated: 2022/12/20 13:00:42 by nemethnikol      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_error(t_recup *recup, char *str)
 		free(recup->sp);
 	if (recup->minimap)
 	{
-		while (++i < recup->sizeline)
+		while (++i < (recup->nblines))
 		{
 			free(recup->minimap[i]);
 			recup->minimap[i] = NULL;
@@ -69,14 +69,14 @@ void	ft_error(t_recup *recup, char *str)
 	if (recup->minimap)
 		free(recup->minimap);
 	recup->minimap = NULL;
-	// i = -1;
+	i = -1;
 	// if (recup->map)
 	// {
-	// 	while (recup->map[++i])
-	// 	{
-	// 		free(recup->map[i]);
-	// 		recup->map[i] = NULL;
-	// 	}
+		while (++i < recup->nblines)
+		{
+			free(recup->map[i]);
+			recup->map[i] = NULL;
+		}
 	// }
 	if (recup->map)
 		free(recup->map);
