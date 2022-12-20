@@ -156,6 +156,7 @@ typedef struct		s_recup
 	int			indicateur;
 	int			indicateur3;
 	int			indicateur2;
+	int			indicateurx;
 	int			erreur;
 	t_data		texture[5];
 	t_data		data;

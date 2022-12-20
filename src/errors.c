@@ -45,7 +45,8 @@ void	ft_error(t_recup *recup, char *str)
 
 	//i = -1;
 	recup->indicateur3 = 1;
-	write(1, "Error\n", 6);
+	if(!(recup->indicateurx))
+		write(1, "Error\n", 6);
 	write(1, str, ft_strlen(str));
 	if (recup->erreur == 1)
 		exit(1);
@@ -106,7 +107,10 @@ void	ft_error(t_recup *recup, char *str)
 int		ft_exit(t_recup *recup)
 {
 	if (recup->indicateur3 == 0)
-		ft_error(recup, "Escaped\n");
+		{
+			recup->indicateurx = 1;
+			ft_error(recup, "Escaped\n");
+		}
 	if (recup->data.img)
 		mlx_destroy_image(recup->data.mlx_ptr, recup->data.img);
 	if (recup->texture[0].img)

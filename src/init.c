@@ -17,6 +17,7 @@ void	ft_init_2(t_recup *recup)
 	recup->depart = 'x';
 	recup->indicateur2 = 0;
 	recup->indicateur3 = 0;
+	recup->indicateurx = 0;
 	recup->data.img = NULL;
 	recup->texture[0].img = NULL;
 	recup->texture[1].img = NULL;
