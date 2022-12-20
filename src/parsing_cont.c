@@ -19,9 +19,6 @@ void	check_elements(t_recup *recup)
 
 void	replace_empty(t_recup *recup, int len, char *curr_line)
 {
-	int	i;
-
-	i = 0;
 	if (len < recup->sizeline)
 	{
 		len = recup->sizeline;
@@ -60,11 +57,10 @@ void	check_minimap(t_recup *recup)
 {
 	int	i;
 	int	j;
-	int	diff;
 
 	i = 0;
 	j = 0;
-	diff = 0;
+
 	while (i < recup->nblines)
 	{
 		j = 0;

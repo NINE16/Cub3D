@@ -53,6 +53,7 @@ void	ft_create_minimap(t_recup *recup)
 		{
 			if (ft_copy_map(&recup->map[i], recup) == 0)
 			{
+				free(recup->map[i]);
 				break ;
 			}
 			else

@@ -48,10 +48,8 @@ void	put_area(t_recup *recup)
 {
 	int	i;
 	int	j;
-	int	color;
 
 	i = 0;
-	color = 0;
 	// init_minimap(recup);
 	while (i < recup->nblines)
 	{

@@ -45,15 +45,15 @@ int	ft_copy_map(char **map, t_recup *recup)
 
 	i = 0;
 	j = 0;
-	if (!(recup->minimap = malloc(sizeof(char *) * recup->sizeline + 1)))
+	if (!(recup->minimap = malloc(sizeof(*recup->minimap) * (recup->sizeline + 1))))
 		return (0);
 	while (map[i])
 	{
-		if (!(recup->minimap[j] = malloc(sizeof(char) * recup->sizeline + 1)))
+		if (!(recup->minimap[j] = malloc(sizeof(char *) * recup->nblines + 1)))
 			return (0);
 		recup->minimap[j] = ft_strdup(map[i]);
 		//printf("map: %s\n",recup->map[i]);
-		free(recup->map[i]);
+		//free(recup->map[i]);
 		j++;
 		i++;
 	}

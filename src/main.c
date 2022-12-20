@@ -15,8 +15,10 @@ void	check_map(t_recup *recup, char *ficher)
 	{
 		map = get_next_line(fd);
 		if (map == NULL)
-			break ;
+			{free(map);
+			break ;}
 		chars = ft_strjoin(chars, map);
+		free(map);
 	}
 	recup->map = ft_split(chars, '\n');
 	free(chars);
