@@ -129,6 +129,10 @@ int		ft_exit(t_recup *recup)
 
 int ft_close(t_recup *recup)
 {
-	(void)recup;
-	exit(0);
+	if (recup->indicateur3 == 0)
+		{
+			recup->indicateurx = 1;
+			ft_error(recup, "Escaped\n");
+		}
+	return(0);
 }
