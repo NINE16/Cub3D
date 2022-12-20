@@ -41,9 +41,9 @@ void	ft_verify_errors(t_recup *recup)
 
 void	ft_error(t_recup *recup, char *str)
 {
-	int	i;
+	//int	i;
 
-	i = -1;
+	//i = -1;
 	recup->indicateur3 = 1;
 	write(1, "Error\n", 6);
 	write(1, str, ft_strlen(str));
@@ -59,18 +59,18 @@ void	ft_error(t_recup *recup, char *str)
 		free(recup->ea);
 	if (recup->sp)
 		free(recup->sp);
-	if (recup->minimap)
-	{
-		while (++i < (recup->nblines))
-		{
-			free(recup->minimap[i]);
-			recup->minimap[i] = NULL;
-		}
-	}
+	// if (recup->minimap)
+	// {
+	// 	while (++i < (recup->nblines))
+	// 	{
+	// 		free(recup->minimap[i]);
+	// 		recup->minimap[i] = NULL;
+	// 	}
+	// }
 	if (recup->minimap)
 		free(recup->minimap);
-	recup->minimap = NULL;
-	i = -1;
+	//recup->minimap = NULL;
+	//i = -1;
 	//  if (recup->map)
 	//  {
 	// 	while (++i < recup->nblines)
