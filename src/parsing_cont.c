@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_cont.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/21 14:05:19 by nnemeth           #+#    #+#             */
+/*   Updated: 2022/12/21 14:05:20 by nnemeth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 void	check_elements(t_recup *recup)
@@ -26,7 +38,7 @@ void	replace_empty(t_recup *recup, int len, char *curr_line)
 		{
 			if (ft_isspace(curr_line[len]) == 1)
 				curr_line[len] = '1';
- 			len++;
+			len++;
 		}
 	}
 }
@@ -60,7 +72,6 @@ void	check_minimap(t_recup *recup)
 
 	i = 0;
 	j = 0;
-
 	while (i < recup->nblines)
 	{
 		j = 0;
@@ -68,9 +79,7 @@ void	check_minimap(t_recup *recup)
 		{
 			if (ft_isspace(recup->minimap[i][j]) == 1)
 			{
-				// printf("%s\n", recup->minimap[i]);
 				recup->minimap[i][j] = '1';
-				// printf("%s\n", recup->minimap[i]);
 			}
 			j++;
 		}

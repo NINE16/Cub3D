@@ -6,13 +6,13 @@
 /*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:50:35 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/14 15:10:46 by nnemeth          ###   ########.fr       */
+/*   Updated: 2022/12/21 14:12:00 by nnemeth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	ft_stepsidedist(t_recup *recup) //calcul de stepX, stepY, sideDistX et sideDistY
+void	ft_stepsidedist(t_recup *recup)
 {
 	if (recup->ray.raydirx < 0)
 	{
@@ -41,17 +41,17 @@ void	ft_stepsidedist(t_recup *recup) //calcul de stepX, stepY, sideDistX et side
 	ft_incrementray(recup);
 }
 
-void	ft_incrementray(t_recup *recup) //tant qu'on a pas touche un mur on passe au carre suivant soit dans la direction x soit direction y
+void	ft_incrementray(t_recup *recup)
 {
 	while (recup->ray.hit == 0)
 	{
-		if (recup->ray.sidedistx < recup->ray.sidedisty) // intersection avec un cote x (vertical)
+		if (recup->ray.sidedistx < recup->ray.sidedisty)
 		{
 			recup->ray.sidedistx += recup->ray.deltadistx;
 			recup->ray.mapx += recup->ray.stepx;
 			recup->ray.side = 0;
 		}
-		else //intersection avec un cote y (horizontal)
+		else
 		{
 			recup->ray.sidedisty += recup->ray.deltadisty;
 			recup->ray.mapy += recup->ray.stepy;
@@ -65,7 +65,6 @@ void	ft_incrementray(t_recup *recup) //tant qu'on a pas touche un mur on passe a
 
 void	ft_drawstartend(t_recup *recup)
 {
-	//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
 	if (recup->ray.side == 0)
 		recup->ray.perpwalldist = ((double)recup->ray.mapx - \
 		recup->ray.posx + (1 - (double)recup->ray.stepx) \
@@ -74,7 +73,6 @@ void	ft_drawstartend(t_recup *recup)
 		recup->ray.perpwalldist = ((double)recup->ray.mapy - \
 		recup->ray.posy + (1 - (double)recup->ray.stepy) \
 		/ 2) / recup->ray.raydiry;
-		// calcul de la hauteur de la ligne a dessiner	
 	recup->ray.lineheight = (int)(recup->ry / recup->ray.perpwalldist);
 	recup->ray.drawstart = -recup->ray.lineheight / 2 + recup->ry / 2;
 	if (recup->ray.drawstart < 0)

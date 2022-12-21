@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/21 14:04:53 by nnemeth           #+#    #+#             */
+/*   Updated: 2022/12/21 14:29:12 by nnemeth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 void	find_player(t_recup *recup)
@@ -15,7 +27,7 @@ void	find_player(t_recup *recup)
 				|| recup->minimap[i][j] == 'E' || recup->minimap[i][j] == 'W')
 			{
 				if (recup->depart != 0)
-					ft_error(recup, "Only one player is allowed");
+					ft_error2(recup, "Error\nOnly one player is allowed\n");
 				recup->depart = recup->minimap[i][j];
 				recup->dx = i;
 				recup->dy = j;
@@ -26,23 +38,8 @@ void	find_player(t_recup *recup)
 		i++;
 	}
 	if (recup->depart == 0)
-		ft_error(recup, "You must have at least 1 player");
+		ft_error2(recup, "Error\n You must have at least 1 player\n");
 }
-
-// void	init_minimap(t_recup *recup)
-// {
-// 	// recup->data.mlx_ptr = mlx_init();
-// 	// ft_get_texture_1(recup);
-// 	// recup->data.mlx_win = mlx_new_window(recup->data.mlx_ptr,
-// 			// 1920, 1080, "Cub3D");
-// 	recup->data.img2 = mlx_new_image(recup->data.mlx_ptr,
-// 			(recup->data.width * 4), (recup->data.height * 4));
-// 	recup->data.addr2 = (int *)mlx_get_data_addr(recup->data.img2,
-// 			&recup->data.bits_per_pixel2, &recup->data.line_length2,
-// 			&recup->data.endian2);
-// 	recup->data.miniheight = 15 * 7;
-// 	recup->data.miniwidth = 30 * 7;
-// }
 
 void	put_area(t_recup *recup)
 {
@@ -50,7 +47,6 @@ void	put_area(t_recup *recup)
 	int	j;
 
 	i = 0;
-	// init_minimap(recup);
 	while (i < recup->nblines)
 	{
 		j = 0;
@@ -61,8 +57,6 @@ void	put_area(t_recup *recup)
 		}
 		i++;
 	}
-	// mlx_put_image_to_window(recup->data.mlx_ptr,
-	// 	recup->data.mlx_win, recup->data.img, 50, 50);
 }
 
 int	ft_mini_print(t_recup *recup, int i, int j, int nb)
@@ -70,7 +64,7 @@ int	ft_mini_print(t_recup *recup, int i, int j, int nb)
 	recup->data.miniheight = j;
 	recup->data.miniwidth = i;
 	if ((nb == '\t' || nb == '\n' || nb == '\v'
-		|| nb == '\f' || nb == '\r' || nb == ' '))
+			|| nb == '\f' || nb == '\r' || nb == ' '))
 		draw_map(recup, RED);
 	else if (nb == '1')
 		draw_map(recup, RED);
@@ -97,7 +91,7 @@ int	draw_map(t_recup *recup, int color)
 				mlx_pixel_put(recup->data.mlx_ptr, recup->data.mlx_win, i,
 					j, color);
 			}
-			else 
+			else
 				mlx_pixel_put(recup->data.mlx_ptr, recup->data.mlx_win, i,
 					j, color);
 			j++;
@@ -106,12 +100,3 @@ int	draw_map(t_recup *recup, int color)
 	}
 	return (0);
 }
-
-// void	my_mlx_pixel_put(t_recup *recup, int x, int y, int color)
-// {
-// 	char	*dst;
-
-// 	dst = recup->data.addr + (y * recup->data.line_length
-// 			+ x * (recup->data.bits_per_pixel / 8));
-// 	*(unsigned int *)dst = color;
-// }

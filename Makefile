@@ -12,7 +12,8 @@ SRC =	keys_draw.c \
 		parsing.c \
 		parsing_cont.c \
 		parsing_map.c \
-		parsing_texture.c
+		parsing_texture.c \
+		error_cont.c
 
 LIB	= Libft/libft/libft.a
 
@@ -26,7 +27,7 @@ CC = gcc
 # .a = lib static, les fonctions utilisees sont directement ecrite dans le binaire
 # .dylib = lib dynamique, les fonctions doivent etre chargees au momnent ou on lance le binaire
 
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 OBJ_DIR = obj
 SRC_DIR = src

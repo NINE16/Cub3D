@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_texture.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/21 14:05:26 by nnemeth           #+#    #+#             */
+/*   Updated: 2022/12/21 14:15:47 by nnemeth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 int	ft_path_texture(char *str, char **texture, t_recup*recup, int j)
@@ -5,12 +17,12 @@ int	ft_path_texture(char *str, char **texture, t_recup*recup, int j)
 	int	i;
 
 	i = 0;
-	if(!(*texture = (char *)malloc(sizeof(char) *  ft_strlen(str) + 1)))
+	*texture = (char *)malloc(sizeof(char) * ft_strlen(str) + 1);
+	if (!(*texture))
 		ft_error(recup, "Malloc texture parsing impossible\n");
-	//(void)recup;
 	j = (find_beg(str, j) - 1);
 	if (j == 0)
-		ft_error(recup,"Error in texture");
+		ft_error(recup, "Error in texture");
 	j += 1;
 	while (str[j] != '\0')
 	{

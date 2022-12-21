@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/21 14:05:14 by nnemeth           #+#    #+#             */
+/*   Updated: 2022/12/21 15:07:47 by nnemeth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 void	check_map(t_recup *recup, char *ficher)
@@ -25,9 +37,7 @@ void	check_map(t_recup *recup, char *ficher)
 	}
 	recup->map = ft_split(chars, '\n');
 	free(chars);
-	chars = NULL;
 	free(map);
-	map = NULL;
 	close (fd);
 }
 
@@ -35,8 +45,9 @@ t_recup	*ft_init_struct(void)
 {
 	t_recup	*recup;
 
-	if(!(recup = malloc (sizeof(t_recup) + 1)))
-		return(0);	
+	(recup = malloc (sizeof(t_recup) + 1));
+	if (!(recup))
+		return (0);
 	recup->rx = 1000;
 	recup->ry = 1000;
 	recup->i = 0;
@@ -54,6 +65,12 @@ t_recup	*ft_init_struct(void)
 	recup->depart = 0;
 	recup->dx = 0;
 	recup->dy = 0;
+	ft_struct_init2(recup);
+	return (recup);
+}
+
+t_recup	*ft_struct_init2(t_recup *recup)
+{
 	recup->texture[0].img = NULL;
 	recup->texture[1].img = NULL;
 	recup->texture[2].img = NULL;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/21 14:05:37 by nnemeth           #+#    #+#             */
+/*   Updated: 2022/12/21 14:10:47 by nnemeth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 void	ft_map(char *str, t_recup *recup)
@@ -47,34 +59,18 @@ void	ft_create_minimap(t_recup *recup)
 	int	i;
 
 	i = 0;
+	recup->minimap = malloc(((recup->nblines)) * sizeof(char *));
 	while (recup->map[i])
 	{
 		if (ft_is_map(recup->map[i]) == 1)
 		{
-			ft_copy_map(&recup->map[i], recup);
-			// {
-			break ;
-			// }
-			// else
-			// 	ft_error(recup, "Missing elements");
+			ft_copy_map(recup->map[i], recup);
+			free(recup->map[i]);
 		}
-		// else
-		free(recup->map[i]);
+		else
+			free(recup->map[i]);
 		i++;
 	}
-	// i = 0;
-	// if (recup->map)
-	// {
-	// 	free(recup->map[i]);
-	// 	recup->map[i] = NULL;
-	// }
-	// i = 0;
-	// while(recup->map[i])
-	// {
-	// 	printf("after:%s\n", recup->map[i]);
-	// 	if (recup->map)
-	// 		free(recup->map[i]);
-	// 	i++;
-	// }
+	check_minimap(recup);
 	ft_verify_errors(recup);
 }

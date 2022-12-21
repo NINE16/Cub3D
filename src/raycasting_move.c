@@ -6,7 +6,7 @@
 /*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:50:28 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/14 15:09:39 by nnemeth          ###   ########.fr       */
+/*   Updated: 2022/12/21 14:11:30 by nnemeth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_forward_back(t_recup *recup)
 {
-	if (recup->data.forward == 1) //move forward if no wall in front of you
+	if (recup->data.forward == 1)
 	{
 		if (recup->minimap[(int)(recup->ray.posx + recup->ray.dirx \
 		* recup->ray.movespeed)][(int)recup->ray.posy] == '0')
@@ -23,7 +23,7 @@ void	ft_forward_back(t_recup *recup)
 		+ recup->ray.diry * recup->ray.movespeed)] == '0')
 			recup->ray.posy += recup->ray.diry * recup->ray.movespeed;
 	}
-	if (recup->data.back == 1) //move backwards if no wall behind you
+	if (recup->data.back == 1)
 	{
 		if (recup->minimap[(int)(recup->ray.posx - recup->ray.dirx \
 		* recup->ray.movespeed)][(int)(recup->ray.posy)] == '0')
@@ -63,7 +63,7 @@ void	ft_rotate_right_left(t_recup *recup)
 
 	oldplanx = recup->ray.planx;
 	olddirx = recup->ray.dirx;
-	if (recup->data.rotate_right == 1) //both camera direction and camera PLANE must be rotated
+	if (recup->data.rotate_right == 1)
 	{
 		recup->ray.dirx = recup->ray.dirx * cos(-recup->ray.rotspeed / 2) \
 		- recup->ray.diry * sin(-recup->ray.rotspeed / 2);

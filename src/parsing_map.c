@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/21 14:05:23 by nnemeth           #+#    #+#             */
+/*   Updated: 2022/12/21 14:16:13 by nnemeth          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 int	ft_charinstr(char *str, char c)
@@ -38,34 +50,30 @@ int	ft_is_map(char *str)
 	return (0);
 }
 
-int	ft_copy_map(char **map, t_recup *recup)
+int	ft_copy_map(char *str, t_recup *recup)
 {
-	int	i;
-	int	j;
-	// char **tmp;
+	static int	i = 0;
+	int			j;
 
-	i = 0;
 	j = 0;
-	// if (!(recup->minimap = malloc(sizeof(char *) * recup->sizeline + 1)))
-	// 	return (0);
-	if (j == 0)
-		recup->minimap = malloc(((recup->nblines)) * sizeof(char *));
-	while (map[i])
+	(recup->minimap[i] = malloc(sizeof(char) * recup->sizeline + 1));
+	if (!(recup->minimap[i]))
+		return (0);
+	while (str[j] != '\0')
 	{
-		if (!(recup->minimap[j] = malloc(sizeof(char) * (recup->sizeline))))
-			return (0);
-		recup->minimap[j] = ft_strdup(map[i]);
-		free(map[i]);
+		if (str[j] == ' ')
+			recup->minimap[i][j] = '1';
+		else
+			recup->minimap[i][j] = str[j];
 		j++;
-		i++;
 	}
-	i = 0;
-	// while(map[i])//la map ici est bien free on print rien
-	// {
-	// 	printf("map2: %p\n",map[i]);
-	// 	i++;
-	// }
-	check_minimap(recup);
+	while (j <= (recup->sizeline - 1))
+	{
+		recup->minimap[i][j] = '1';
+		j++;
+	}
+	recup->minimap[i][j] = '\0';
+	i++;
 	return (0);
 }
 

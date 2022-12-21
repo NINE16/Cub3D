@@ -6,7 +6,7 @@
 /*   By: nnemeth <nnemeth@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:49:58 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/15 15:46:30 by nnemeth          ###   ########.fr       */
+/*   Updated: 2022/12/21 14:11:16 by nnemeth          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ void	ft_initialisation3(t_recup *recup)
 	recup->ray.hit = 0;
 	recup->ray.perpwalldist = 0;
 	recup->ray.camerax = 2 * recup->ray.x / (double)recup->rx - 1;
-	//calcul de la position du rayon sur le plan de la camera
 	recup->ray.raydirx = recup->ray.dirx + recup->ray.planx * \
-						recup->ray.camerax; //calcul de direction x du rayon
+						recup->ray.camerax;
 	recup->ray.raydiry = recup->ray.diry + recup->ray.plany * \
-						recup->ray.camerax; //calcul de direction y du rayon
+						recup->ray.camerax;
 	recup->ray.mapx = (int)recup->ray.posx;
 	recup->ray.mapy = (int)recup->ray.posy;
 	recup->ray.movespeed = 0.1;
@@ -51,13 +50,13 @@ void	ft_initialisation3(t_recup *recup)
 
 void	ft_init_texture(t_recup *recup)
 {
-	if (recup->ray.side == 0 && recup->ray.raydirx < 0) //NO
+	if (recup->ray.side == 0 && recup->ray.raydirx < 0)
 		recup->t.texdir = 0;
-	if (recup->ray.side == 0 && recup->ray.raydirx >= 0) // S
+	if (recup->ray.side == 0 && recup->ray.raydirx >= 0)
 		recup->t.texdir = 1;
-	if (recup->ray.side == 1 && recup->ray.raydiry < 0) // WE
+	if (recup->ray.side == 1 && recup->ray.raydiry < 0)
 		recup->t.texdir = 2;
-	if (recup->ray.side == 1 && recup->ray.raydiry >= 0) // EA
+	if (recup->ray.side == 1 && recup->ray.raydiry >= 0)
 		recup->t.texdir = 3;
 	if (recup->ray.side == 0)
 		recup->t.wallx = recup->ray.posy + recup->ray.perpwalldist \
@@ -65,5 +64,5 @@ void	ft_init_texture(t_recup *recup)
 	else
 		recup->t.wallx = recup->ray.posx + recup->ray.perpwalldist \
 						* recup->ray.raydirx;
-	recup->t.wallx -= floor((recup->t.wallx)); // wallX = 15.3 devient wallX = 0.3
+	recup->t.wallx -= floor((recup->t.wallx));
 }
